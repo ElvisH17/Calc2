@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Refinado de Materiales de Albion Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CALCULADORA DE REFINADO DE MATERIALES DE ALBION ONLINE</h1>
+        <p>Obtenga la cantidad de material en bruto y refinado que necesita para su objetivo.</p>
+        <p>Introduzca el tier de material procesado que deseas obtener, después introduce la cantidad de material procesado de ese tier que deseas conseguir, y por último escribe el porcentaje de devolución que tienes. (Sin %, por Ejemplo: 36,7% usted introduce 36,7)</p>
+        <p>Por norma general si Ud. refina en la ciudad donde se obtiene la máxima devolución el porcentaje sin foco es 36,7 %.</p>
+        <p>NOTA IMPORTANTE: con esta formula usted obtendrá una pequeña cantidad de excedente del producto final.</p>
+
+        <form id="refining-calculator">
+            <label for="tier">Tier</label>
+            <select id="tier" name="tier">
+                <option value="T2">T2</option>
+                <option value="T3">T3</option>
+                <option value="T4">T4</option>
+                <option value="T5">T5</option>
+                <option value="T6">T6</option>
+                <option value="T7">T7</option>
+                <option value="T8">T8</option>
+            </select>
+
+            <label for="processed-materials">Materiales Procesados</label>
+            <input type="number" id="processed-materials" name="processed-materials">
+
+            <label for="return-rate">Devolución</label>
+            <input type="number" id="return-rate" name="return-rate">
+
+            <button type="button" onclick="calculateMaterials()">Enviar</button>
+        </form>
+
+        <div class="results">
+            <div class="raw-materials">
+                <h2>MATERIALES EN BRUTO</h2>
+                <div id="raw-materials-result"></div>
+            </div>
+            <div class="refined-materials">
+                <h2>MATERIALES REFINADOS</h2>
+                <div id="refined-materials-result"></div>
+            </div>
+        </div>
+        <div class="interpretation">
+            <h2>INTERPRETACIÓN DE RESULTADOS</h2>
+            <p>Tomaremos como ejemplo que queremos obtener 100 lingotes del tier 5, y además tenemos la devolución de 36,7 %.</p>
+            <p>Seleccionamos T5, después añadimos el valor 100, y por último el porcentaje de devolución del 36,7 %.</p>
+            <p>Hora de leer los resultados, si quieres comenzar a refinar desde 0, es decir sin comprar ningún lingote, y vas a utilizar solo los minerales en bruto, deberás comprar los minerales que especifica la tabla de arriba, con las cantidades de cada tier que se presentan.</p>
+            <p>Ej: para sus 100 lingotes de tier 5, con una devolución de 36,7 %, y sin tener previamente ningún lingote, usted deberá de comprar según la tabla (17 minerales t2, 53 minerales t3, 82 minerales t4 y 193 minerales t5).</p>
+            <p>Ahora imaginemos que usted quiere obtener 100 lingotes de tier 5, tiene la devolución al 36,7 % (como en el caso anterior).</p>
+            <p>En este caso usted desea comenzar a refinar desde tier 3 por el motivo que sea (ya tenía usted lingotes de tier 3 o simplemente decidió comprarlos). Para saber lo que necesita continuando con el ejemplo, deberá de conseguir 41 lingotes de tier 3 que nos da esa cantidad de tabla de materiales refinados, y después necesitaremos los valores de la tabla de material bruto t4: 82 minerales y t5 193 minerales.</p>
+            <p>Si por ejemplo queremos comenzar a refinar desde el Tier 4, siguiendo con el ejemplo anterior, necesitaríamos 64 lingotes de t4 y 193 minerales.</p>
+            <p>Conclusión: si se empieza desde 0 refinando todo se usa la tabla de arriba, si se desea empezar desde un tier específico, se toma el valor de ese tier de la tabla de abajo (material refinado) y de los tier superiores de la tabla de arriba (materiales en bruto).</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
